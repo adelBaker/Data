@@ -1,0 +1,206 @@
+create table menu(
+menu_id number(2),
+name varchar2(50),
+type varchar2(50),
+price number(3,1) not null,
+vegetarian varchar2(1),
+constraint PK_menu_id primary key (menu_id)
+);
+
+alter table menu modify(vegetarian char(1));
+
+create table ingredents(
+menu_id number(2),
+ingredent varchar2(50),
+constraint FK_menu_id foreign key(menu_id)
+references menu (menu_id)
+);
+
+create table coustomer(
+cus_id number(2),
+f_name varchar2(20),
+m_name varchar2(20),
+l_name varchar2(20),
+phone varchar2(9),
+constraint PK_cus_id primary key (cus_id)
+);
+
+create table orders(
+order_id number(2),
+cus_id number(2),
+constraint PK_order_id primary key(order_id),
+constraint FK_cus_id foreign key(cus_id)
+references  coustomer(cus_id)
+);
+
+create table bill(
+order_id number(2),
+delivery varchar2(1),
+date_of_take date,
+constraint FK_order_id foreign key (order_id)
+references orders (order_id)
+);
+
+create table detalis(
+menu_id number(2),
+order_id number(2),
+amount number(2),
+date_of_order date,
+constraint FK_menu_id1 foreign key(menu_id)
+references menu (menu_id),
+constraint FK_order_id1 foreign key(order_id)
+references orders (order_id)
+);
+
+
+
+//strat of breakfats
+insert into menu(menu_id,name,type,price,vegetarian) values(1,'Chicken muffin','breakfast',11,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(2,'Egg and sausage wrap','breakfast',12,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(3,'Muffin with eggs','breakfast',11,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(4,'Sausage Chicken Muffin','breakfast',15,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(5,'Big Breakfast','breakfast',14,'N');
+
+insert into ingredents (menu_id,ingredent) values (1,'muffin');
+insert into ingredents (menu_id,ingredent) values (1,'butter');
+insert into ingredents (menu_id,ingredent) values (1,'mayonnaise');
+insert into ingredents (menu_id,ingredent) values (1,'lettuce');
+insert into ingredents (menu_id,ingredent) values (1,'chicken');
+
+insert into ingredents (menu_id,ingredent) values (2,'Tortilla');
+insert into ingredents (menu_id,ingredent) values (2,'Cheddar cheese');
+insert into ingredents (menu_id,ingredent) values (2,'egg');
+insert into ingredents (menu_id,ingredent) values (2,'sausage');
+
+insert into ingredents (menu_id,ingredent) values (3,'muffin');
+insert into ingredents (menu_id,ingredent) values (3,'butter');
+insert into ingredents (menu_id,ingredent) values (3,'egg');
+insert into ingredents (menu_id,ingredent) values (3,'chicken');
+insert into ingredents (menu_id,ingredent) values (3,'Cheddar cheese');
+
+insert into ingredents (menu_id,ingredent) values (4,'muffin');
+insert into ingredents (menu_id,ingredent) values (4,'butter');
+insert into ingredents (menu_id,ingredent) values (4,'chicken');
+insert into ingredents (menu_id,ingredent) values (4,'Cheddar cheese');
+
+insert into ingredents (menu_id,ingredent) values (5,'muffin');
+insert into ingredents (menu_id,ingredent) values (5,'butter');
+insert into ingredents (menu_id,ingredent) values (5,'egg');
+insert into ingredents (menu_id,ingredent) values (5,'Hash bronze');
+insert into ingredents (menu_id,ingredent) values (5,'sausage');
+
+//end of breakfats
+/////////////////////////////////////////////////////
+//Start of burger
+insert into menu(menu_id,name,type,price,vegetarian) values(6,'big mac','Burger',20.4,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(7,'McRoyale','Burger',25.5,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(8,'Big Tasty','Burger',25,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(9,'Cheese Burger','Burger',30,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(10,'beef burger','Burger',27,'N');
+
+insert into ingredents (menu_id,ingredent) values (6,'Big Mac bread');
+insert into ingredents (menu_id,ingredent) values (6,'Big Mac Sauce');
+insert into ingredents (menu_id,ingredent) values (6,'Onion');
+insert into ingredents (menu_id,ingredent) values (6,'lettuce');
+insert into ingredents (menu_id,ingredent) values (6,'pickled');
+insert into ingredents (menu_id,ingredent) values (6,'Cheddar cheese');
+insert into ingredents (menu_id,ingredent) values (6,'chicken');
+
+insert into ingredents (menu_id,ingredent) values (7,'Bread');
+insert into ingredents (menu_id,ingredent) values (7,'mustard');
+insert into ingredents (menu_id,ingredent) values (7,'ketchup');
+insert into ingredents (menu_id,ingredent) values (7,'Onion');
+insert into ingredents (menu_id,ingredent) values (7,'pickled');
+insert into ingredents (menu_id,ingredent) values (7,'Tomatoes');
+insert into ingredents (menu_id,ingredent) values (7,'chicken');
+
+insert into ingredents (menu_id,ingredent) values (8,'Big Tasty Bread');
+insert into ingredents (menu_id,ingredent) values (8,'Tasty sauce');
+insert into ingredents (menu_id,ingredent) values (8,'lettuce');
+insert into ingredents (menu_id,ingredent) values (8,'Onion');
+insert into ingredents (menu_id,ingredent) values (8,'Tomatoes');
+insert into ingredents (menu_id,ingredent) values (8,'Emantal cheese');
+insert into ingredents (menu_id,ingredent) values (8,'chicken');
+
+insert into ingredents (menu_id,ingredent) values (9,'Bread');
+insert into ingredents (menu_id,ingredent) values (9,'mustard');
+insert into ingredents (menu_id,ingredent) values (9,'ketchup');
+insert into ingredents (menu_id,ingredent) values (9,'Onion');
+insert into ingredents (menu_id,ingredent) values (9,'pickled');
+insert into ingredents (menu_id,ingredent) values (9,'Cheddar cheese');
+insert into ingredents (menu_id,ingredent) values (9,'chicken');
+
+insert into ingredents (menu_id,ingredent) values (10,'Bread');
+insert into ingredents (menu_id,ingredent) values (10,'mustard');
+insert into ingredents (menu_id,ingredent) values (10,'ketchup');
+insert into ingredents (menu_id,ingredent) values (10,'Onion');
+insert into ingredents (menu_id,ingredent) values (10,'pickled');
+insert into ingredents (menu_id,ingredent) values (10,'Meat');
+
+//End of burger
+/////////////////////////////////////////////////////
+//Start of Snacks
+
+insert into menu(menu_id,name,type,price,vegetarian) values(11,'Potatos','Snacks',5.5,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(12,'Caesar salad','Snacks',7,'N');
+insert into menu(menu_id,name,type,price,vegetarian) values(13,'Chicken Nuggets','Snacks',13,'N');
+
+insert into ingredents (menu_id,ingredent) values (11,'Potatos');
+
+insert into ingredents (menu_id,ingredent) values (12,'lettuce');
+insert into ingredents (menu_id,ingredent) values (12,'chicken');
+insert into ingredents (menu_id,ingredent) values (12,'Bread');
+insert into ingredents (menu_id,ingredent) values (12,'mayonnaise');
+
+insert into ingredents (menu_id,ingredent) values (13,'Chicken nuggets');
+insert into ingredents (menu_id,ingredent) values (13,'ketchup');
+
+//End of Snacks
+//////////////////////////////////////////////
+//Start of Candy
+
+insert into menu(menu_id,name,type,price,vegetarian) values(14,'Ice cream biscuit','Candy',3,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(15,'Ice cream with caramel','Candy',2,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(16,'Chocolate ice cream','Candy',2,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(17,'Mac Fleury Oreo','Candy',3,'Y');
+
+insert into ingredents (menu_id,ingredent) values (14,'Vanilla ice cream');
+insert into ingredents (menu_id,ingredent) values (14,'Biscuit');
+
+insert into ingredents (menu_id,ingredent) values (15,'Vanilla ice cream');
+insert into ingredents (menu_id,ingredent) values (15,'caramel');
+insert into ingredents (menu_id,ingredent) values (15,'Biscuit');
+
+insert into ingredents (menu_id,ingredent) values (16,'Vanilla ice cream');
+insert into ingredents (menu_id,ingredent) values (16,'Chocolate');
+
+insert into ingredents (menu_id,ingredent) values (17,'Vanilla ice cream');
+insert into ingredents (menu_id,ingredent) values (17,'Oreo');
+insert into ingredents (menu_id,ingredent) values (17,'Biscuit');
+
+//End of Candy
+////////////////////////////////////////////
+//Start of drinks
+insert into menu(menu_id,name,type,price,vegetarian) values(18,'Sprite','drinks',5,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(19,'Coca Cola','drinks',5,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(20,'Fanta','drinks',4,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(21,'Orange juice','drinks',7,'Y');
+insert into menu(menu_id,name,type,price,vegetarian) values(22,'Apple juice','drinks',7,'Y');
+
+//End of drinks
+///////////////////////////////////////////////////
+
+
+insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (1,'adel','mohammed','Al-baker','123456789');
+insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (2,'ammar','mohammed','Al-baker','012395847');
+insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (3,'Ali','mohammed','Al-baker','859632157');
+insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (4,'smer','khaled','hassan','859748515');
+insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (5,'nor','saad','salman','156987453');
+
+
+
+
+
+
+
+
