@@ -198,9 +198,39 @@ insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (4,'smer','khale
 insert into coustomer(cus_id,f_name,m_name,l_name,phone) values (5,'nor','saad','salman','156987453');
 
 
+insert into orders(order_id,cus_id) values(1,1);
+insert into bill(order_id,delivery,date_of_take) values(1,'N','01-APR-2021');
+insert into detalis(menu_id,order_id,amount,date_of_order) values (1,1,4,'01-APR-2020');
 
 
 
+insert into orders(order_id,cus_id) values(2,2);
+insert into detalis(menu_id,order_id,amount,date_of_order) values (1,2,4,'11-JAN-2020');
+insert into bill(order_id,delivery,date_of_take) values(2,'Y','12-JAN-2020');
+
+insert into orders(order_id,cus_id) values(3,3);
+insert into detalis(menu_id,order_id,amount,date_of_order) values (4,1,1,'02-MAY-2020');
+insert into bill(order_id,delivery,date_of_take) values(3,'Y','02-MAY-2020');
 
 
+//Querie about the  menu in ascending order
+select * from menu order by menu_id;
+
+
+//Querie about max price in menu
+select * from menu M
+where M.price=(select max(price) from menu);
+
+
+//Querie about the vegetarian menu
+select * from menu where vegetarian='Y' order by menu_id;
+
+
+//Querie about the coustomers and ther orders
+select C.cus_id,C.f_name,C.l_name,O.order_id,O.cus_id
+from coustomer C join orders O
+on C.cus_id=O.cus_id;
+
+//Querie  about ingredents of specific menu
+select ingredent from ingredents where menu_id=3;
 
